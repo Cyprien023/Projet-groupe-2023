@@ -1,8 +1,9 @@
 const mysql = require('mysql');
+
 const port_mariadb = 3306;
-const host = 'localhost';
-const user = 'remote';
-const password = '.';
+const host = 'drawk.hopto.org';
+const user = 'project';
+const password = '4X48L6yFrvH3uu';
 
 
 const connection = mysql.createConnection({
@@ -20,3 +21,11 @@ function executerRequeteSQL(request) {
         connection.end();
     });
 }
+
+connection.connect()
+connection.query('show tables;', (error,results) => {
+    console.log(results)
+    connection.end()
+})
+
+//executerRequeteSQL('create table a (id int);')
