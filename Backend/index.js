@@ -10,7 +10,8 @@ app.use(cors({
     exposeHeaders: ['sessionId'],
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     preflightContinue: false
-}))
+}));
+
 app.use("/api", routes);
 
 app.listen('8000', () => {

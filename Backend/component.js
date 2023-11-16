@@ -1,5 +1,4 @@
 const mysql = require("mysql");
-const util = require('util');
 
 const connection = mysql.createConnection({
     host: 'drawk.hopto.org',
@@ -12,13 +11,13 @@ const connection = mysql.createConnection({
 function execute(query, callback) {
     connection.connect();
 
-    connection.query(query, (erreur, resultats, champs) => {
+    connection.query(query, (erreur, results, champs) => {
         if (erreur) {
-            console.error('Erreur lors de l\'exécution de la requête : ', erreur);
+            console.error('Erreur lors de l\'exécution de la requête : ');
             callback(erreur, null);
         } else {
-            console.log('Résultats de la requête : ', resultats);
-            callback(null, resultats);
+            console.log('Résultats de la requête : ', results);
+            callback(null, results);
         }
     });
 
@@ -39,5 +38,5 @@ module.exports.getUsers = async (req, res) => {
 
 
 module.exports.sayHello = (req, res) => {
-
+    res.send('Hello Wrld !');
 }
