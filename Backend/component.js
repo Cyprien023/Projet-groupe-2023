@@ -11,12 +11,12 @@ const connection = mysql.createConnection({
 function execute(query, callback) {
     connection.connect();
 
-    connection.query(query, (erreur, results, champs) => {
-        if (erreur) {
-            console.error('Erreur lors de l\'exécution de la requête : ');
-            callback(erreur, null);
+    connection.query(query, (err, results, champs) => {
+        if (err) {
+            console.error('Erreur lors de l\'exécution de la requête.');
+            callback(err, null);
         } else {
-            console.log('Résultats de la requête : ', results);
+            console.log(results);
             callback(null, results);
         }
     });
@@ -27,8 +27,12 @@ function execute(query, callback) {
 
 module.exports.getUsers = async (req, res) => {
     try {
-        execute('SHOW TABLES;', (err, r) => {
-            res.send(r[0]);
+        execute('SHOW tables;', (err, r) => {
+            if (err){
+                res.status(503).send('Erreur');
+                return;
+            }
+            res.json(r);
         })
     } catch (error) {
         console.error(error);

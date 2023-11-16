@@ -1,6 +1,5 @@
-const express = require('express');
-const app = express()
-const cors = require('cors')
+const app = require('express')();
+const cors = require('cors');
 const routes = require('./routes.js');
 
 app.use(cors({
@@ -14,6 +13,4 @@ app.use(cors({
 
 app.use("/api", routes);
 
-app.listen('8000', () => {
-    console.log('en écoute')
-})
+app.listen('8000');
