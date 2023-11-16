@@ -1,31 +1,18 @@
-const mysql = require('mysql');
+const express = require('express');
+const app = express()
+const cors = require('cors')
+const routes = require('./routes.js');
 
-const port_mariadb = 3306;
-const host = 'drawk.hopto.org';
-const user = 'project';
-const password = '4X48L6yFrvH3uu';
+app.use(cors({
+    origin: '*',
+    credentials: true,
+    allowedHeaders: ["sessionId","Content-Type"],
+    exposeHeaders: ['sessionId'],
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    preflightContinue: false
+}))
+app.use("/api", routes);
 
-
-const connection = mysql.createConnection({
-    host: host,
-    user: user,
-    password: password,
-    database: 'project',
-    port: port_mariadb,
-});
-
-function executerRequeteSQL(request) {
-    connection.connect();
-    connection.query(request, (e) => {
-        if (e) throw e;
-        connection.end();
-    });
-}
-
-connection.connect()
-connection.query('show tables;', (error,results) => {
-    console.log(results)
-    connection.end()
+app.listen('8000', () => {
+    console.log('en écoute')
 })
-
-//executerRequeteSQL('create table a (id int);')
