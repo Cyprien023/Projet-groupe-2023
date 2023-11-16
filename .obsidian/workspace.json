@@ -23,11 +23,9 @@
             "id": "47d609d75e009f28",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "image",
               "state": {
-                "file": "FrontEnd/Idée FrontEnd Figma.md",
-                "mode": "source",
-                "source": false
+                "file": "FrontEnd/Idée FrontEnd Figma.png"
               }
             }
           }
@@ -98,7 +96,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "FrontEnd/Idée FrontEnd Figma.md",
+                "file": "FrontEnd/Idée FrontEnd Figma.png",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,7 +113,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "FrontEnd/Idée FrontEnd Figma.md",
+                "file": "FrontEnd/Idée FrontEnd Figma.png",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -138,7 +136,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "FrontEnd/Idée FrontEnd Figma.md"
+                "file": "FrontEnd/Idée FrontEnd Figma.png"
               }
             }
           }
@@ -161,8 +159,8 @@
   },
   "active": "47d609d75e009f28",
   "lastOpenFiles": [
-    "FrontEnd/Pasted image 20231116092946.png",
     "FrontEnd/Idée FrontEnd Figma.md",
+    "FrontEnd/Idée FrontEnd Figma.png",
     "README.md",
     "FrontEnd"
   ]
