@@ -1,5 +1,6 @@
 const bcrypt = require("bcrypt");
 const { execute } = require('./func.js')
+
 const saltRounds = 10;
 
 
@@ -8,7 +9,7 @@ module.exports.getUsers = async (req, res) => {
     try {
         execute('SELECT * FROM User', values, (err, r) => {
             if (err) {
-                res.status(503).send('Erreur');
+                res.status(503).json({confirmation : 0});
                 return;
             }
             res.json(r);
@@ -19,6 +20,11 @@ module.exports.getUsers = async (req, res) => {
 };
 
 module.exports.createUser = async (req, res) => {
+    if (!(req.query.lastname && req.query.firstname && req.query.email && req.query.password && req.query.id_entreprise)){
+        res.status(400).json({confirmation : 0, error : 'Missing parameters.'});
+        return;
+    }
+
     let values = [undefined, undefined, undefined, undefined, undefined];
     values[0] = req.query.lastname;
     values[1] = req.query.firstname;
@@ -28,7 +34,7 @@ module.exports.createUser = async (req, res) => {
     try {
         execute('INSERT INTO User (lastname, firstname, email, password, id_entreprise) VALUE (?, ?, ?, ?, ?)', values, (err, r) => {
             if (err) {
-                res.status(503).send('Erreur');
+                res.status(503).json({confirmation : 0});
                 return;
             }
             res.json({confirmation : 1});
@@ -44,7 +50,7 @@ module.exports.deleteUser = async (req, res) => {
     try {
         execute('DELETE FROM User where id=?;', values, (err, r) => {
             if (err) {
-                res.status(503).send('Erreur');
+                res.status(503).json({confirmation : 0});
                 return;
             }
             res.json({confirmation : 1});
@@ -54,6 +60,22 @@ module.exports.deleteUser = async (req, res) => {
     }
 
 };
+
+module.exports.getUsersFromEnterprise = async (req, res) => {
+    let values = [req.query.id_entreprise]
+    try {
+        execute('SELECT * FROM User WHERE id_entreprise=?;', values, (err, r) => {
+            if (err) {
+                res.status(503).json({confirmation : 0});
+                return;
+            }
+            res.json(r);
+        })
+    } catch (error) {
+        res.status(500).send('Erreur lors de l\'exécution de la requête SQL');
+    }
+};
+
 
 
 module.exports.sayHello = (req, res) => {

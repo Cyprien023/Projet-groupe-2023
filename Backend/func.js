@@ -11,7 +11,7 @@ connection.connect();
 
 module.exports.execute = (query, values, callback) => {
 
-    connection.query(query, values, (err, results, champs) => {
+    connection.query(query, values, (err, results) => {
         if (err) {
             console.error('Erreur lors de l\'exécution de la requête.');
             callback(err, null);
