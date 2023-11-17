@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const multer = require('multer')
 const {sayHello,
     getUsers,
     createUser,
@@ -14,7 +15,7 @@ router.get('/', sayHello);
 
 router.post('/getUsers', getUsers);
 
-router.post('/createUser', createUser);
+router.post('/createUser', multer().array(), createUser);
 
 router.post('/deleteUser', deleteUser);
 
