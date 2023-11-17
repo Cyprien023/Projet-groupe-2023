@@ -8,8 +8,9 @@ const connection = mysql.createConnection({
     port: 3306,
 });
 
+connection.connect();
+
 function execute(query, values, callback) {
-    connection.connect();
 
     connection.query(query, values, (err, results, champs) => {
         if (err) {
@@ -21,7 +22,7 @@ function execute(query, values, callback) {
         }
     });
 
-    connection.end();
+
 }
 
 
@@ -29,14 +30,14 @@ module.exports.getUsers = async (req, res) => {
     let values = []
     try {
         execute('SHOW tables;', values, (err, r) => {
-            if (err){
+            if (err) {
                 res.status(503).send('Erreur');
+                connection.end();
                 return;
             }
             res.json(r);
         })
     } catch (error) {
-        console.error(error);
         res.status(500).send('Erreur lors de l\'exécution de la requête SQL');
     }
 };
