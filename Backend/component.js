@@ -29,7 +29,7 @@ function execute(query, values, callback) {
 module.exports.getUsers = async (req, res) => {
     let values = []
     try {
-        execute('SHOW tables;', values, (err, r) => {
+        execute('SELECT * FROM User', values, (err, r) => {
             if (err) {
                 res.status(503).send('Erreur');
                 connection.end();
@@ -40,6 +40,47 @@ module.exports.getUsers = async (req, res) => {
     } catch (error) {
         res.status(500).send('Erreur lors de l\'exécution de la requête SQL');
     }
+};
+
+module.exports.createUser = async (req, res) => {
+    let values = [undefined, undefined, undefined, undefined, undefined];
+    values[0] = req.query.lastname;
+    values[1] = req.query.firstname;
+    values[2] = req.query.email;
+    values[3] = req.query.password;
+    values[4] = parseInt(req.query.id_entreprise);
+    console.log(values);
+    try {
+        execute('INSERT INTO User (lastname, firstname, email, password, id_entreprise) VALUE (?, ?, ?, ?, ?)', values, (err, r) => {
+            if (err) {
+                res.status(503).send('Erreur');
+                connection.end();
+                return;
+            }
+            res.json({confirmation : 1});
+        })
+    } catch (error) {
+        res.status(500).send('Erreur lors de l\'exécution de la requête SQL');
+    }
+
+};
+
+module.exports.deleteUser = async (req, res) => {
+    let values = [undefined];
+    values[0] = req.query.id;
+    try {
+        execute('DELETE FROM User where id=?;', values, (err, r) => {
+            if (err) {
+                res.status(503).send('Erreur');
+                connection.end();
+                return;
+            }
+            res.json({confirmation : 1});
+        })
+    } catch (error) {
+        res.status(500).send('Erreur lors de l\'exécution de la requête SQL');
+    }
+
 };
 
 

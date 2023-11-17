@@ -1,14 +1,14 @@
 USE project;
 
-DROP TABLE IF EXISTS Entreprise, ESP, ESP_DATA, User, Owner;
+DROP TABLE IF EXISTS Owner, ESP_DATA, User, Entreprise, ESP;
 
 CREATE TABLE IF NOT EXISTS Entreprise (
-    id int primary key,
+    id int primary key auto_increment,
     nom varchar(100) not null unique
 );
 
 CREATE TABLE IF NOT EXISTS User (
-    id int primary key,
+    id int primary key auto_increment,
     lastname varchar(50) not null,
     firstname varchar(50) not null,
     email varchar(250) not null,
@@ -17,11 +17,11 @@ CREATE TABLE IF NOT EXISTS User (
 );
 
 CREATE TABLE IF NOT EXISTS ESP (
-    id int primary key
+    id int primary key auto_increment
 );
 
 CREATE TABLE IF NOT EXISTS ESP_DATA (
-    id int primary key,
+    id int primary key auto_increment,
     data json,
     ts datetime not null,
     id_esp int REFERENCES ESP(id)
