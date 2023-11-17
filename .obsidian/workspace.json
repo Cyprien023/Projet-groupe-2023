@@ -35,7 +35,7 @@
             "state": {
               "type": "image",
               "state": {
-                "file": "Pasted image 20231117102647.png"
+                "file": "Sql/Pasted image 20231117104808.png"
               }
             }
           },
@@ -116,7 +116,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Pasted image 20231117102647.png",
+                "file": "Sql/Pasted image 20231117104808.png",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -133,7 +133,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Pasted image 20231117102647.png",
+                "file": "Sql/Pasted image 20231117104808.png",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -156,7 +156,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Pasted image 20231117102647.png"
+                "file": "Sql/Pasted image 20231117104808.png"
               }
             }
           }
@@ -179,10 +179,12 @@
   },
   "active": "b4f0554996ee98ad",
   "lastOpenFiles": [
-    "Sql/Untitled.md",
-    "Pasted image 20231117102647.png",
-    "test.md",
+    "Sql/init_tables.sql",
     "Node.js/Serveur.js.md",
+    "Sql/Pasted image 20231117102647.png",
+    "Sql/Untitled.md",
+    "Sql/Pasted image 20231117104808.png",
+    "test.md",
     "Sql",
     "Backend/routes.js",
     "Backend/node_modules/object-assign/readme.md",
@@ -214,7 +216,6 @@
     "Backend/node_modules/process-nextick-args/license.md",
     "Backend/node_modules/mysql/node_modules/safe-buffer/README.md",
     "Backend/node_modules/mysql/Readme.md",
-    "Backend/node_modules/mysql/Changes.md",
-    "Backend/node_modules/core-util-is/README.md"
+    "Backend/node_modules/mysql/Changes.md"
   ]
 }
