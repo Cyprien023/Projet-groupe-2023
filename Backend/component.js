@@ -32,7 +32,6 @@ module.exports.getUsers = async (req, res) => {
         execute('SELECT * FROM User', values, (err, r) => {
             if (err) {
                 res.status(503).send('Erreur');
-                connection.end();
                 return;
             }
             res.json(r);
@@ -54,7 +53,6 @@ module.exports.createUser = async (req, res) => {
         execute('INSERT INTO User (lastname, firstname, email, password, id_entreprise) VALUE (?, ?, ?, ?, ?)', values, (err, r) => {
             if (err) {
                 res.status(503).send('Erreur');
-                connection.end();
                 return;
             }
             res.json({confirmation : 1});
@@ -72,7 +70,6 @@ module.exports.deleteUser = async (req, res) => {
         execute('DELETE FROM User where id=?;', values, (err, r) => {
             if (err) {
                 res.status(503).send('Erreur');
-                connection.end();
                 return;
             }
             res.json({confirmation : 1});
