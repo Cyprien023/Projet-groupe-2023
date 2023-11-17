@@ -1,5 +1,6 @@
 const mysql = require("mysql");
-
+const bcrypt = require("bcrypt");
+const saltRounds = 10;
 const connection = mysql.createConnection({
     host: 'drawk.hopto.org',
     user: 'project',
@@ -46,9 +47,8 @@ module.exports.createUser = async (req, res) => {
     values[0] = req.query.lastname;
     values[1] = req.query.firstname;
     values[2] = req.query.email;
-    values[3] = req.query.password;
+    values[3] = bcrypt.hashSync(req.query.password, saltRounds);
     values[4] = parseInt(req.query.id_entreprise);
-    console.log(values);
     try {
         execute('INSERT INTO User (lastname, firstname, email, password, id_entreprise) VALUE (?, ?, ?, ?, ?)', values, (err, r) => {
             if (err) {
@@ -60,7 +60,6 @@ module.exports.createUser = async (req, res) => {
     } catch (error) {
         res.status(500).send('Erreur lors de l\'exécution de la requête SQL');
     }
-
 };
 
 module.exports.deleteUser = async (req, res) => {
