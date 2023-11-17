@@ -4,7 +4,7 @@ const {sayHello, getUsers, createUser, deleteUser } = require('./component.js')
 
 router.get('/', sayHello);
 
-router.get('/getUsers', getUsers);
+router.post('/getUsers', getUsers);
 
 router.post('/createUser', createUser);
 
